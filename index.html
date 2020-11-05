@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List App</title>
+    <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
 </head>
 <body>
-    
+    <h1>ToDo List</h1>
+
+    <form>
+        <label for="task">Task to do: </label>
+        <input id="task" type="text" placeholder="Take out the trash">
+        <span></span>
+        <br>
+
+        <label for="date">Date do by: </label>
+        <input id="date" type="text">
+        <span></span>
+        <br>
+
+        <label for="completed">Is Completed?</label>
+        <input type="checkbox" id="completed">
+        <br>
+
+        <input id="add-item" type="button" value="Add to list">
+    </form>
+    <script src="https://unpkg.com/js-datepicker"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

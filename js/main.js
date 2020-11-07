@@ -37,7 +37,7 @@ function displayToDoItem(item) {
     var taskText = document.createElement("h2");
     taskText.innerText = item.task;
     var dueDate = document.createElement("p");
-    dueDate.innerText = item.dueDate.toString();
+    dueDate.innerText = item.dueDate.toDateString();
     var itemDiv = document.createElement("div");
     itemDiv.appendChild(taskText);
     itemDiv.appendChild(dueDate);

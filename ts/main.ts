@@ -59,7 +59,7 @@ function displayToDoItem(item:ToDoItem):void{
     taskText.innerText = item.task;
 
     let dueDate = document.createElement("p");
-    dueDate.innerText = item.dueDate.toString();
+    dueDate.innerText = item.dueDate.toDateString();
 
     let itemDiv = document.createElement("div");
     itemDiv.appendChild(taskText);

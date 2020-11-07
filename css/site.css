@@ -1,0 +1,24 @@
+body{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+#todo div {
+    box-sizing: border-box;
+    width: 17.5%;
+    background-color: burlywood;
+    margin: .8em;
+    border-radius: .8em;
+    
+}
+
+#todo p, h2 {
+    margin-top: .75em;
+    margin-bottom: .5em;
+    padding: .25em;
+    font-weight: bold;
+}
+
+.completed {
+    opacity: 30%;
+    text-decoration: line-through;
+}

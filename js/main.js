@@ -39,6 +39,7 @@ function displayToDoItem(item) {
     var dueDate = document.createElement("p");
     dueDate.innerText = item.dueDate.toDateString();
     var itemDiv = document.createElement("div");
+    itemDiv.onclick = completeOrIncomplete;
     itemDiv.appendChild(taskText);
     itemDiv.appendChild(dueDate);
     if (item.isCompleted) {
@@ -49,6 +50,17 @@ function displayToDoItem(item) {
     }
     var todoDiv = document.getElementById("todo");
     todoDiv.appendChild(itemDiv);
+}
+function completeOrIncomplete() {
+    var divClick = this;
+    if (divClick.classList.contains("completed")) {
+        divClick.classList.add("incomplete");
+        divClick.classList.remove("completed");
+    }
+    else if (divClick.classList.contains("incomplete")) {
+        divClick.classList.add("completed");
+        divClick.classList.remove("incomplete");
+    }
 }
 function AddToList() {
     if (isValid()) {

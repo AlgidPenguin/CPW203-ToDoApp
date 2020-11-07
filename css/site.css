@@ -1,14 +1,13 @@
-body{
+body {
     font-family: 'Fira Sans', sans-serif;
 }
 
 #todo div {
     box-sizing: border-box;
     width: 17.5%;
-    background-color: burlywood;
+    cursor: pointer;
     margin: .8em;
     border-radius: .8em;
-    
 }
 
 #todo p, h2 {
@@ -18,7 +17,13 @@ body{
     font-weight: bold;
 }
 
+.incomplete{
+    background-color: burlywood;
+    text-decoration: underline;
+}
+
 .completed {
-    opacity: 30%;
+    opacity: 40%;
     text-decoration: line-through;
+    background-color: rgb(255, 172, 76);
 }

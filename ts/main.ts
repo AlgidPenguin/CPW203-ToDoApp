@@ -16,7 +16,15 @@ class ToDoItem{
 window.onload = function() {
     let addToList = document.getElementById("add-item");
     addToList.onclick = AddToList;
+
+    loadSavedItem();
 }
+
+function loadSavedItem() {
+    let item = getToDo(); // reads from storage
+    displayToDoItem(item);
+}
+
 
 /**
  * See if data is valid
@@ -59,7 +67,9 @@ function displayToDoItem(item:ToDoItem):void{
     taskText.innerText = item.task;
 
     let dueDate = document.createElement("p");
-    dueDate.innerText = item.dueDate.toDateString();
+    // dueDate.innerText = item.dueDate.toDateString();
+    let dateTodo = new Date(item.dueDate.toString());
+    dueDate.innerText = dateTodo.toDateString();
 
     let itemDiv = document.createElement("div");
     itemDiv.onclick = completeOrIncomplete;
@@ -96,5 +106,26 @@ function AddToList():void {
     if(isValid()) {
         let itemToAdd = getToDoItem();
         displayToDoItem(itemToAdd);
+        saveToDo(itemToAdd);
     }
+}
+
+function saveToDo(item:ToDoItem):void {
+    // Convert ToDoItem into JSON string
+    let itemString = JSON.stringify(item);
+
+    // Save string
+    localStorage.setItem(todokey, itemString);
+}
+
+const todokey = "todo";
+
+/**
+ * Get stored ToDo item or return null if
+ * none is found
+ */
+function getToDo():ToDoItem {
+    let itemString = localStorage.getItem(todokey);
+    let item:ToDoItem = JSON.parse(itemString);
+    return item;
 }

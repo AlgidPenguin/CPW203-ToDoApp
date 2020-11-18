@@ -18,7 +18,6 @@ form input{
 #todo div {
     box-sizing: border-box;
     width: 17.5%;
-    cursor: pointer;
     margin: auto;
     margin-bottom: 1em;
     border-radius: .8em;
@@ -30,6 +29,7 @@ form input{
     margin-bottom: .5em;
     padding: .25em;
     font-weight: bold;
+    clear: both;
 }
 
 .incomplete{
@@ -81,4 +81,16 @@ form input{
 .description-click {
     color: blue;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.mark-complete {
+    font-size: 2em;
+    height: 1.25em;
+    float: right;
+    margin-right: .5em;
+}
+
+.mark-complete:hover {
+    cursor: pointer;
 }

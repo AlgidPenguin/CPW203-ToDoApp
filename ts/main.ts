@@ -81,15 +81,21 @@ function displayToDoItem(item:ToDoItem):void{
     descPopup.className = "description-click";
     descPopup.innerText = "Click here to see description";
 
+    let markCompleteSpan = document.createElement("span");
+    markCompleteSpan.className = "mark-complete";
+    markCompleteSpan.innerHTML = "&#9745;";
+
     let descPopupText = document.getElementById("info-paragraph");
 
     let itemDiv = document.createElement("div");
     
+    itemDiv.appendChild(markCompleteSpan);
     itemDiv.appendChild(taskText);
     itemDiv.appendChild(dueDate);
     itemDiv.appendChild(descPopup);
+    
 
-    itemDiv.onclick = completeOrIncomplete;
+    markCompleteSpan.onclick = completeOrIncomplete;
     descPopup.onclick = displayDescription;
 
     descPopup.onclick = function() {
@@ -110,16 +116,17 @@ function displayToDoItem(item:ToDoItem):void{
 }
 
 function completeOrIncomplete():void {
-    let divClick = <HTMLElement>this;
+    let span = <HTMLElement>this;
+    let spanClick = span.parentElement;
 
-    if(divClick.classList.contains("completed")) {
-        divClick.classList.add("incomplete");
-        divClick.classList.remove("completed");
+    if(spanClick.classList.contains("completed")) {
+        spanClick.classList.add("incomplete");
+        spanClick.classList.remove("completed");
     }
 
-    else if(divClick.classList.contains("incomplete")) {
-        divClick.classList.add("completed");
-        divClick.classList.remove("incomplete");
+    else if(spanClick.classList.contains("incomplete")) {
+        spanClick.classList.add("completed");
+        spanClick.classList.remove("incomplete");
     }
 }
 

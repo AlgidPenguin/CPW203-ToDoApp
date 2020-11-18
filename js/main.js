@@ -1,9 +1,10 @@
 var picker = datepicker("#date");
 picker.setMin(new Date());
 var ToDoItem = (function () {
-    function ToDoItem(task, dueDate, isCompleted) {
+    function ToDoItem(task, dueDate, description, isCompleted) {
         this.task = task;
         this.dueDate = dueDate;
+        this.description = description;
         this.isCompleted = isCompleted;
     }
     return ToDoItem;
@@ -36,8 +37,9 @@ function isValid() {
 function getToDoItem() {
     var task = document.getElementById("task").value;
     var date = new Date(document.getElementById("date").value);
+    var description = document.getElementById("description").value;
     var completed = document.getElementById("completed").checked;
-    var listItem = new ToDoItem(task, date, completed);
+    var listItem = new ToDoItem(task, date, description, completed);
     return listItem;
 }
 function displayToDoItem(item) {
@@ -46,10 +48,20 @@ function displayToDoItem(item) {
     var dueDate = document.createElement("p");
     var dateTodo = new Date(item.dueDate.toString());
     dueDate.innerText = dateTodo.toDateString();
+    var descPopup = document.createElement("p");
+    descPopup.className = "description-click";
+    descPopup.innerText = "Click here to see description";
+    var descPopupText = document.getElementById("info-paragraph");
     var itemDiv = document.createElement("div");
-    itemDiv.onclick = completeOrIncomplete;
     itemDiv.appendChild(taskText);
     itemDiv.appendChild(dueDate);
+    itemDiv.appendChild(descPopup);
+    itemDiv.onclick = completeOrIncomplete;
+    descPopup.onclick = displayDescription;
+    descPopup.onclick = function () {
+        descPopupText.innerText = item.description;
+        displayDescription();
+    };
     if (item.isCompleted) {
         itemDiv.classList.add("completed");
     }
@@ -69,6 +81,14 @@ function completeOrIncomplete() {
         divClick.classList.add("completed");
         divClick.classList.remove("incomplete");
     }
+}
+function displayDescription() {
+    var descClick = document.getElementById("info-popup");
+    var closeButton = document.querySelector(".close-button");
+    descClick.style.display = "block";
+    closeButton.onclick = function () {
+        descClick.style.display = "none";
+    };
 }
 function AddToList() {
     if (isValid()) {

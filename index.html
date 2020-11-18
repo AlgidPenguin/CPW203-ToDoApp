@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List App</title>
+    <title>ToDo List</title>
     <link rel="stylesheet" href="css/site.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
 </head>
 <body>
-    <h1>ToDo List</h1>
+    <div id="contain-background">
+        <h1>ToDo List</h1>
 
-    <form>
-        <label for="task">Task to do: </label>
-        <input id="task" type="text" placeholder="Take out the trash">
-        <span></span>
-        <br>
+        <form>
+            <label for="task">Task to do: </label>
+            <input id="task" type="text" placeholder="Take out the trash">
+            <span></span>
+            <br>
 
-        <label for="date">Date do by: </label>
-        <input id="date" type="text">
-        <span></span>
-        <br>
+            <label for="date">Date do by: </label>
+            <input id="date" type="text">
+            <span></span>
+            <br>
 
-        <label for="completed">Is Completed?</label>
-        <input type="checkbox" id="completed">
-        <br>
+            <label for="description">Description: </label>
+            <input id="description" type="text">
+            <br>
 
-        <input id="add-item" type="button" value="Add to list">
-    </form>
+            <label for="completed">Is Completed?</label>
+            <input type="checkbox" id="completed">
+            <br>
 
-    <h2>ToDo List</h2>
-    <div id="todo"></div>
+            <input id="add-item" type="button" value="Add to list">
+        </form>
+
+        <h2>ToDo List</h2>
+        <div id="todo"></div>
+
+
+        <div id="info-popup">
+            <div class="info-content">
+                <span class="close-button">&times;</span>
+                <p id="info-paragraph"></p>
+            </div>
+        </div>
+    </div>
     
     <script src="https://unpkg.com/js-datepicker"></script>
     <script src="js/main.js"></script>

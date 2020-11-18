@@ -1,14 +1,29 @@
 body {
     font-family: 'Fira Sans', sans-serif;
+    margin: 0px;
+    text-align: center;
+    background-color: gray;
+}
+
+form input{
+    margin-bottom: 1em;
+}
+
+#contain-background {
+    width: 85%;
+    margin: auto;
+    background-image: url("https://www.teahub.io/photos/full/104-1040589_notepad-wallpaper.jpg");
 }
 
 #todo div {
     box-sizing: border-box;
     width: 17.5%;
     cursor: pointer;
-    margin: .8em;
+    margin: auto;
+    margin-bottom: 1em;
     border-radius: .8em;
 }
+
 
 #todo p, h2 {
     margin-top: .75em;
@@ -19,7 +34,6 @@ body {
 
 .incomplete{
     background-color: burlywood;
-    text-decoration: underline;
 }
 
 .completed {
@@ -32,5 +46,39 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+#info-popup {
+    display: none;
+    width: inherit;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+.info-content {
+    font-weight: bold;
+    margin: auto;
+    margin-top: 1.5em;
+    width: 50%;
+    background-color: rgb(226, 116, 153);
+    padding: 2.5em;
+    border-radius: 1em;
+}
+
+.close-button {
+    float: right;
+    font-size: 2em;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
+.description-click {
+    color: blue;
+    text-decoration: underline;
 }

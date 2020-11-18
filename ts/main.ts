@@ -4,11 +4,13 @@ picker.setMin(new Date());
 class ToDoItem{
     task:string;
     dueDate:Date;
+    description:string;
     isCompleted:boolean;
 
-    constructor(task:string, dueDate:Date, isCompleted:boolean) {
+    constructor(task:string, dueDate:Date, description:string, isCompleted:boolean) {
         this.task = task;
         this.dueDate = dueDate;
+        this.description = description;
         this.isCompleted = isCompleted;
     }
 }
@@ -56,9 +58,10 @@ function isValid():boolean {
 function getToDoItem():ToDoItem {
     let task = (<HTMLInputElement>document.getElementById("task")).value;
     let date = new Date((<HTMLInputElement>document.getElementById("date")).value);
+    let description = (<HTMLInputElement>document.getElementById("description")).value;
     let completed = (<HTMLInputElement>document.getElementById("completed")).checked;
 
-    let listItem = new ToDoItem(task, date, completed);
+    let listItem = new ToDoItem(task, date, description, completed);
     return listItem;
 }
 
@@ -74,10 +77,25 @@ function displayToDoItem(item:ToDoItem):void{
     let dateTodo = new Date(item.dueDate.toString());
     dueDate.innerText = dateTodo.toDateString();
 
+    let descPopup = document.createElement("p");
+    descPopup.className = "description-click";
+    descPopup.innerText = "Click here to see description";
+
+    let descPopupText = document.getElementById("info-paragraph");
+
     let itemDiv = document.createElement("div");
-    itemDiv.onclick = completeOrIncomplete;
+    
     itemDiv.appendChild(taskText);
     itemDiv.appendChild(dueDate);
+    itemDiv.appendChild(descPopup);
+
+    itemDiv.onclick = completeOrIncomplete;
+    descPopup.onclick = displayDescription;
+
+    descPopup.onclick = function() {
+        descPopupText.innerText = item.description;
+        displayDescription();
+    }
 
     if(item.isCompleted) {
         itemDiv.classList.add("completed");
@@ -102,6 +120,17 @@ function completeOrIncomplete():void {
     else if(divClick.classList.contains("incomplete")) {
         divClick.classList.add("completed");
         divClick.classList.remove("incomplete");
+    }
+}
+
+function displayDescription():void {
+    let descClick = document.getElementById("info-popup");
+    let closeButton = <HTMLElement>document.querySelector(".close-button");
+
+    descClick.style.display = "block";
+
+    closeButton.onclick = function() {
+        descClick.style.display = "none";
     }
 }
 
